@@ -1,0 +1,46 @@
+/* Sets up the graph-paper grid background and font across the whole page */
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #1a1a1a;
+  background-color: #ffffff;
+
+  /* Creates light gray grid lines like graph paper */
+  background-image: 
+    linear-gradient(to right, #e5e7eb 1px, transparent 1px),
+    linear-gradient(to bottom, #e5e7eb 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Centers the app content on the screen */
+.app-container {
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+/* Styles the top header card with a soft teal accent and bold black border */
+.app-header {
+  background-color: #8fd3cc;
+  border: 3px solid #1a1a1a;
+  border-radius: 14px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 5px 5px 0px #1a1a1a;
+  margin-bottom: 24px;
+}
+
+/* Styles the main title */
+.app-header h1 {
+  margin: 0 0 8px 0;
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+/* Styles the subtitle text */
+.app-header p {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
