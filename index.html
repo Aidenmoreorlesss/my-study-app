@@ -29,6 +29,51 @@
       <p>break big assignments into small steps &amp; see what's due first</p>
     </header>
 
+    <!-- Section for adding a new assignment -->
+    <section class="form-card">
+      <h2>add a new assignment</h2>
+
+      <!-- Form to collect assignment details from Jordan -->
+      <form id="assignmentForm">
+        <!-- Input for assignment title -->
+        <div class="form-group">
+          <label for="taskName">assignment name</label>
+          <input type="text" id="taskName" placeholder="e.g., study for math exam" required>
+        </div>
+
+        <!-- Row to group class name and due date side-by-side -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="className">class</label>
+            <input type="text" id="className" placeholder="e.g., math" required>
+          </div>
+
+          <div class="form-group">
+            <label for="dueDate">due date</label>
+            <input type="date" id="dueDate" required>
+          </div>
+        </div>
+
+        <!-- Row to group max time and important checkbox -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="maxTime">max time (minutes)</label>
+            <input type="number" id="maxTime" placeholder="e.g., 45" min="5" required>
+          </div>
+
+          <div class="form-group checkbox-group">
+            <label for="isImportant">
+              <input type="checkbox" id="isImportant">
+              mark as important ★
+            </label>
+          </div>
+        </div>
+
+        <!-- Button to submit the form -->
+        <button type="submit" class="add-btn">+ add assignment</button>
+      </form>
+    </section>
+
   </div>
 </body>
 </html>
