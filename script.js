@@ -188,4 +188,4 @@ function addStep(taskId) {
       renderAssignments();
     }
   }
-}
+   }
