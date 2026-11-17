@@ -124,3 +124,54 @@ body {
 .add-btn:hover {
   background-color: #f08080;
 }
+/* Styles the section heading for the assignment list */
+.list-section h2 {
+  font-size: 1.4rem;
+  margin-bottom: 14px;
+}
+
+/* Styles each individual assignment card */
+.assignment-card {
+  background-color: #ffffff;
+  border: 3px solid #1a1a1a;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 5px 5px 0px #1a1a1a;
+  margin-bottom: 18px;
+}
+
+/* Highlights important assignments with a golden yellow background */
+.assignment-card.important {
+  background-color: #ffe699;
+}
+
+/* Top row of the card with title and important badge */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+/* Badge shown on important assignments */
+.important-badge {
+  background-color: #f4a261;
+  border: 2px solid #1a1a1a;
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+/* Displays class name, due date, and max time */
+.card-meta {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #333333;
+  margin: 0;
+}
