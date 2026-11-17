@@ -175,3 +175,82 @@ body {
   color: #333333;
   margin: 0;
 }
+/* Container for the progress bar and percentage label */
+.progress-section {
+  margin: 14px 0;
+}
+
+.progress-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+  display: block;
+}
+
+/* Outer track of the progress bar */
+.progress-track {
+  width: 100%;
+  height: 16px;
+  background-color: #f3f4f6;
+  border: 2px solid #1a1a1a;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Colored fill bar that grows as steps are completed */
+.progress-fill {
+  height: 100%;
+  background-color: #8fd3cc;
+  width: 0%;
+  transition: width 0.25s ease;
+}
+
+/* List of smaller checklist steps inside a card */
+.steps-list {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0;
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  font-size: 0.95rem;
+}
+
+/* Crosses out step text when checked off */
+.step-item.completed span {
+  text-decoration: line-through;
+  color: #6b7280;
+}
+
+/* Input row to add a new smaller step to an assignment */
+.add-step-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.add-step-row input {
+  flex: 1;
+  padding: 8px;
+  border: 2px solid #1a1a1a;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+
+.add-step-btn {
+  padding: 8px 14px;
+  background-color: #8fd3cc;
+  border: 2px solid #1a1a1a;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.add-step-btn:hover {
+  background-color: #76c2ba;
+}

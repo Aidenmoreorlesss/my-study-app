@@ -94,5 +94,98 @@ document.getElementById("assignmentForm").addEventListener("submit", function (e
   event.target.reset();
 });
 
-// Display the starter assignment as soon as the page loads
-renderAssignments();
+// FUNCTION:
+// Sorts assignments by closest due date first and displays them with steps and a progress bar.
+function renderAssignments() {
+  const listContainer = document.getElementById("assignmentList");
+  listContainer.innerHTML = "";
+
+  // Sort a copy of the array so the earliest due dates appear at the top
+  const sorted = [...assignments].sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
+
+  // Loop through each assignment and build its card
+  sorted.forEach((task) => {
+    const card = document.createElement("div");
+    card.className = "assignment-card";
+
+    if (task.important) {
+      card.classList.add("important");
+    }
+
+    const badgeHTML = task.important ? `<span class="important-badge">★ important</span>` : "";
+
+    // Calculate completion percentage for the progress bar
+    const totalSteps = task.steps.length;
+    const completedSteps = task.steps.filter((step) => step.done).length;
+    const percent = totalSteps === 0 ? 0 : Math.round((completedSteps / totalSteps) * 100);
+
+    // Build HTML for each smaller step checkbox
+    let stepsHTML = "";
+    task.steps.forEach((step, index) => {
+      const checkedAttr = step.done ? "checked" : "";
+      const completedClass = step.done ? "completed" : "";
+      stepsHTML += `
+        <li class="step-item ${completedClass}">
+          <input type="checkbox" ${checkedAttr} onchange="toggleStep(${task.id}, ${index})">
+          <span>${step.text}</span>
+        </li>
+      `;
+    });
+
+    card.innerHTML = `
+      <div class="card-header">
+        <h3>${task.name}</h3>
+        ${badgeHTML}
+      </div>
+      <p class="card-meta">
+        Class: ${task.className} &bull; Due: ${task.dueDate} &bull; Max time: ${task.maxTime} mins
+      </p>
+
+      <!-- Progress bar section -->
+      <div class="progress-section">
+        <span class="progress-label">Progress: ${percent}% (${completedSteps}/${totalSteps} steps)</span>
+        <div class="progress-track">
+          <div class="progress-fill" style="width: ${percent}%;"></div>
+        </div>
+      </div>
+
+      <!-- Checklist of smaller steps -->
+      <ul class="steps-list">
+        ${stepsHTML}
+      </ul>
+
+      <!-- Input to break the assignment into more steps -->
+      <div class="add-step-row">
+        <input type="text" id="stepInput-${task.id}" placeholder="add a smaller step...">
+        <button type="button" class="add-step-btn" onclick="addStep(${task.id})">+ step</button>
+      </div>
+    `;
+
+    listContainer.appendChild(card);
+  });
+}
+
+// FUNCTION:
+// Toggles a step between done and not done, then updates the progress bar.
+function toggleStep(taskId, stepIndex) {
+  const task = assignments.find((item) => item.id === taskId);
+  if (task) {
+    task.steps[stepIndex].done = !task.steps[stepIndex].done;
+    renderAssignments();
+  }
+}
+
+// FUNCTION:
+// Adds a new smaller step to a specific assignment.
+function addStep(taskId) {
+  const input = document.getElementById(`stepInput-${taskId}`);
+  const stepText = input.value.trim();
+
+  if (stepText !== "") {
+    const task = assignments.find((item) => item.id === taskId);
+    if (task) {
+      task.steps.push({ text: stepText, done: false });
+      renderAssignments();
+    }
+  }
+}
